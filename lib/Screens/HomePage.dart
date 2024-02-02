@@ -261,14 +261,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              alphabets.isEmpty || N_num.text.isEmpty || M_num.text.isEmpty ?
+              alphabets.isEmpty || N_num.text.isEmpty && M_num.text.isEmpty ?
               Container(): Container(
                 height: MediaQuery.of(context).size.height,
                 child: GridView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: AlwaysScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: int.tryParse(N_num.text) ?? 1,
+                    crossAxisCount: int.tryParse(N_num.text.isEmpty ? M_num.text : N_num.text) ?? 1,
+                    childAspectRatio: 1.0,
                   ),
                   itemCount: alphabets.length,
                   itemBuilder: (context, index) {
