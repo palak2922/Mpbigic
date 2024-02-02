@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     for (int i = 0; i < alphabets.length; i++) {
       for (int j = 0; j < alphabets[i].length; j++) {
-        if (alphabets[i][j] == text && text.length == 1) {
+        if (alphabets[i][j].toLowerCase() == text.toLowerCase() && text.length == 1) {
           setState(() {
             highlightedCells.add('$i$j');
           });
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       for (int i = 0; i < alphabets.length; i++) {
         for (int j = 0; j < alphabets[i].length; j++) {
           for (int k = 0; k < text.length; k++) {
-            if (alphabets[i][j] == text[k] && alphabets[i][j] == text[k++]) {
+            if (alphabets[i][j].toLowerCase() == text[k].toLowerCase() && alphabets[i][j].toLowerCase() == text[k++].toLowerCase()) {
               setState(() {
                 highlightedCells.add('$i$j');
               });
@@ -268,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   scrollDirection: Axis.horizontal,
                   physics: AlwaysScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: int.tryParse(N_num.text.isEmpty ? M_num.text : N_num.text) ?? 1,
+                    crossAxisCount: int.tryParse(N_num.text) ?? 1,
                   ),
                   itemCount: alphabets.length,
                   itemBuilder: (context, index) {
